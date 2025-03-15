@@ -22,11 +22,15 @@ local cachedAnimations = {} :: { [Instance]: { [Animation]: AnimationTrack } }
 
 local random = Random.new()
 
-local function cleanupCachedAnimations()
+local function cleanUpEnemyCachedAnimations(enemy: Instance)
+	if not enemy:IsDescendantOf(Workspace) then
+		cachedAnimations[enemy] = nil
+	end
+end
+
+local function cleanupAllCachedAnimations()
 	for enemy, _ in cachedAnimations do
-		if not enemy:IsDescendantOf(Workspace) then
-			cachedAnimations[enemy] = nil
-		end
+		cleanUpEnemyCachedAnimations(enemy)
 	end
 end
 
@@ -54,16 +58,15 @@ local function onAggroedPlayerHeartbeat(enemy: Instance, userId: number)
 	end
 
 	local enemyHumanoid = enemy:FindFirstChildOfClass("Humanoid")
-	if not enemyHumanoid then
+	if not enemyHumanoid or enemyHumanoid.Health <= 0 then
 		return
 	end
-	if enemyHumanoid.Health <= 0 then
-		return
-	end
+
 	local enemyRootPart = enemyHumanoid.RootPart
 	if not enemyRootPart then
 		return
 	end
+
 	local enemyRootRigAttachment = enemyRootPart:FindFirstChild("RootRigAttachment")
 	if not enemyRootRigAttachment or not enemyRootRigAttachment:IsA("Attachment") then
 		return
@@ -134,7 +137,7 @@ local function onAggroedPlayerHeartbeat(enemy: Instance, userId: number)
 	enemy:SetAttribute(Constants.IS_ON_COOLDOWN_ATTRIBUTE, true)
 	local swingCooldowns = enemyTable.swingCooldowns
 	local swingCooldown = swingCooldowns[newAnimationIndex] or swingCooldowns[#swingCooldowns]
-	print(swingCooldown)
+
 	task.delay(swingCooldown, function()
 		enemy:SetAttribute(Constants.IS_ON_COOLDOWN_ATTRIBUTE, false)
 	end)
@@ -144,7 +147,7 @@ local function onAggroedPlayerHeartbeat(enemy: Instance, userId: number)
 
 	local enemyCachedAnimations = cachedAnimations[enemy] or {}
 	cachedAnimations[enemy] = enemyCachedAnimations
-	cleanupCachedAnimations()
+	cleanupAllCachedAnimations()
 
 	local attackAnimation = attackAnimations[newAnimationIndex]
 	local animator = enemyHumanoid:FindFirstChildOfClass("Animator")
@@ -168,32 +171,37 @@ local function onAggroedPlayerHeartbeat(enemy: Instance, userId: number)
 	task.delay(attackDelay, Enemies.doEnemyAttack, enemy, hitboxOffset, hitboxSize, playersDamaged, attackDuration)
 end
 
+local function onEnemyMissingOnHeartbeat(enemy: Instance, initialPosition: any, initialOrientation: any)
+	enemy:Destroy()
+	if
+		(typeof(initialPosition) ~= "Vector3" and type(initialPosition) ~= "vector")
+		and (typeof(initialOrientation) ~= "Vector3" and type(initialOrientation) ~= "vector")
+	then
+		return
+	end
+	task.delay(
+		Constants.ENEMY_RESPAWN_DELAY_DURATION,
+		Enemies.respawnEnemy,
+		enemy.Name,
+		initialPosition,
+		initialOrientation
+	)
+end
+
 local function onEnemyHeartbeat(enemy: Instance)
 	local initialPosition = enemy:GetAttribute(Constants.INITIAL_POSITION_ATTRIBUTE)
 	local initialOrientation = enemy:GetAttribute(Constants.INITIAL_ORIENTATION_ATTRIBUTE)
 
 	local humanoid = enemy:FindFirstChildOfClass("Humanoid")
 	if not humanoid or not humanoid:IsDescendantOf(Workspace) then
-		enemy:Destroy()
-		if
-			(typeof(initialPosition) == "Vector3" or type(initialPosition) == "vector")
-			and (typeof(initialOrientation) == "Vector3" or type(initialOrientation) == "vector")
-		then
-			task.delay(Constants.ENEMY_RESPAWN_DELAY_DURATION, Enemies.respawnEnemy, enemy.Name, initialPosition, initialOrientation)
-		end
+		onEnemyMissingOnHeartbeat(enemy, initialPosition, initialOrientation)
 		return
 	end
 
 	local rootPart = humanoid.RootPart
 
 	if not rootPart or not rootPart:IsDescendantOf(Workspace) then
-		enemy:Destroy()
-		if
-			(typeof(initialPosition) == "Vector3" or type(initialPosition) == "vector")
-			and (typeof(initialOrientation) == "Vector3" or type(initialOrientation) == "vector")
-		then
-			task.delay(Constants.ENEMY_RESPAWN_DELAY_DURATION, Enemies.respawnEnemy, enemy.Name, initialPosition, initialOrientation)
-		end
+		onEnemyMissingOnHeartbeat(enemy, initialPosition, initialOrientation)
 		return
 	end
 

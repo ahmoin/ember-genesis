@@ -245,7 +245,13 @@ local function onEnemyDeath(enemy: Instance, rootPart: BasePart, player: Player)
 		return
 	end
 
-	task.delay(Constants.ENEMY_RESPAWN_DELAY_DURATION, Enemies.respawnEnemy, enemy.Name, initialPosition, initialOrientation)
+	task.delay(
+		Constants.ENEMY_RESPAWN_DELAY_DURATION,
+		Enemies.respawnEnemy,
+		enemy.Name,
+		initialPosition,
+		initialOrientation
+	)
 end
 
 local function updateCharacterOverlapParameters()

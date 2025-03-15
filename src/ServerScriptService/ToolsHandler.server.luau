@@ -11,18 +11,21 @@ local Tools = require(ReplicatedStorage:WaitForChild("Modules"):WaitForChild("To
 local remotes = ReplicatedStorage.Remotes
 local activateToolRemote = remotes.ActivateTool
 
+local function setCooldownOnFalse(tool: Tool)
+	if tool and tool:IsDescendantOf(Workspace) then
+		tool:SetAttribute(Constants.IS_ON_COOLDOWN_ATTRIBUTE, false)
+	end
+end
+
 local function onActivateToolEvent(player: Player)
+	print("onActivateToolEvent", player)
 	local character = player.Character
 	if not character then
 		return
 	end
 
 	local humanoid = character:FindFirstChildOfClass("Humanoid")
-	if not humanoid then
-		return
-	end
-
-	if humanoid.Health <= 0 then
+	if not humanoid or humanoid.Health <= 0 then
 		return
 	end
 
@@ -57,11 +60,7 @@ local function onActivateToolEvent(player: Player)
 
 	tool:SetAttribute(Constants.IS_ON_COOLDOWN_ATTRIBUTE, true)
 	local delayDuration = newAnimationIndex == 4 and 1 or 0.5
-	task.delay(delayDuration, function()
-		if tool and tool:IsDescendantOf(Workspace) then
-			tool:SetAttribute(Constants.IS_ON_COOLDOWN_ATTRIBUTE, false)
-		end
-	end)
+	task.delay(delayDuration, setCooldownOnFalse, tool)
 
 	local enemiesDamaged = {}
 

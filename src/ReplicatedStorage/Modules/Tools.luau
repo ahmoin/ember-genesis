@@ -14,8 +14,8 @@ type Tool = {
 	idleAnimation: Animation,
 	specialOne: string,
 	specialTwo: string,
-    hitboxSize: Vector3,
-    hitboxOffset: CFrame,
+	hitboxSize: Vector3,
+	hitboxOffset: CFrame,
 }
 
 local Tools = {
@@ -29,8 +29,8 @@ local Tools = {
 		idleAnimation = combatIdleAnimation,
 		specialOne = "Quick Tackle",
 		specialTwo = "Ground Smash",
-        hitboxSize = Vector3.new(3, 3, 8),
-        hitboxOffset = CFrame.new(0, 0, -6),
+		hitboxSize = Vector3.new(3, 3, 8),
+		hitboxOffset = CFrame.new(0, 0, -6),
 	},
 } :: { [string]: Tool }
 
