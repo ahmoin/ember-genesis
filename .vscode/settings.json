@@ -1,0 +1,8 @@
+{
+  "xml.fileAssociations": [
+    {
+      "systemId": "https://gist.githubusercontent.com/Dekkonot/690231f6974f5867c4ce0287adfb6616/raw/5583d4073a67003f1b6f156c30d11a88462bdc6f/roblox.xsd",
+      "pattern": "**/*.rbxmx"
+    }
+  ]
+}

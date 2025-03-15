@@ -232,7 +232,7 @@ local function onEnemyDeath(enemy: Instance, rootPart: BasePart, player: Player)
 	if worldAttachment then
 		worldAttachment:Destroy()
 	end
-	task.delay(2, function()
+	task.delay(Constants.ENEMEY_DESTROY_DELAY_DURATION, function()
 		enemy:Destroy()
 	end)
 	local initialPosition = enemy:GetAttribute(Constants.INITIAL_POSITION_ATTRIBUTE)
@@ -245,7 +245,7 @@ local function onEnemyDeath(enemy: Instance, rootPart: BasePart, player: Player)
 		return
 	end
 
-	task.delay(2.5, Enemies.respawnEnemy, enemy.Name, initialPosition, initialOrientation)
+	task.delay(Constants.ENEMY_RESPAWN_DELAY_DURATION, Enemies.respawnEnemy, enemy.Name, initialPosition, initialOrientation)
 end
 
 local function updateCharacterOverlapParameters()

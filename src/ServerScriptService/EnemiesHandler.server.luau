@@ -179,7 +179,7 @@ local function onEnemyHeartbeat(enemy: Instance)
 			(typeof(initialPosition) == "Vector3" or type(initialPosition) == "vector")
 			and (typeof(initialOrientation) == "Vector3" or type(initialOrientation) == "vector")
 		then
-			task.delay(2.5, Enemies.respawnEnemy, enemy.Name, initialPosition, initialOrientation)
+			task.delay(Constants.ENEMY_RESPAWN_DELAY_DURATION, Enemies.respawnEnemy, enemy.Name, initialPosition, initialOrientation)
 		end
 		return
 	end
@@ -192,7 +192,7 @@ local function onEnemyHeartbeat(enemy: Instance)
 			(typeof(initialPosition) == "Vector3" or type(initialPosition) == "vector")
 			and (typeof(initialOrientation) == "Vector3" or type(initialOrientation) == "vector")
 		then
-			task.delay(2.5, Enemies.respawnEnemy, enemy.Name, initialPosition, initialOrientation)
+			task.delay(Constants.ENEMY_RESPAWN_DELAY_DURATION, Enemies.respawnEnemy, enemy.Name, initialPosition, initialOrientation)
 		end
 		return
 	end

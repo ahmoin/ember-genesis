@@ -1,68 +1,55 @@
 --!strict
 
 local Constants = {
-	WATER_ATTACHMENT_NAME = "waterAttachment",
-	WATER_MODEL_NAME = "WaterModel",
-	DATA_STORE_NAME = "main",
-	NPC_COLLISION_GROUP = "npc",
-	CHARACTER_COLLISION_GROUP = "character",
-
-	WIND_COLLECTION_TAG = "windShake",
-
-	DASH_DEBOUNCE_ATTRIBUTE = "onDashCooldown",
-	DASH_KEY_CODE = Enum.KeyCode.Q,
-	DASH_IMPULSE_MAGNITUDE = 128,
 	DASH_DURATION = 0.5,
+    DASH_IMPULSE_MAGNITUDE = 128,
+    MAX_LEVEL = 2700,
+	ENEMEY_DESTROY_DELAY_DURATION = 2,
+	ENEMY_RESPAWN_DELAY_DURATION = 16,
 
-	MAX_LEVEL = 2700,
-	EXP_ATTRIBUTE = "exp",
-	STAT_POINTS_ATTRIBUTE = "statPoints",
+    IS_ANIMATING_ATTRIBUTE = "isAnimating",
+    IS_DEAD_ATTRIBUTE = "isDead",
+    IS_ON_COOLDOWN_ATTRIBUTE = "isOnCooldown",
 
-	AGGROED_PLAYER_USER_ID_ATTRIBUTE = "aggroedPlayerUserId",
+    ANIMATION_INDEX_ATTRIBUTE = "animationIndex",
+    DAMAGE_ATTRIBUTE = "damage",
+    HITBOX_OFFSET_ATTRIBUTE = "hitboxOffset",
+    HITBOX_SIZE_ATTRIBUTE = "hitboxSize",
+    SWING_COOLDOWN_ATTRIBUTE = "swingCooldown",
+    VOLUME_ATTRIBUTE = "volume",
 
-	NAME_ATTRIBUTE = "name",
-	ACCEPT_QUEST_BUTTON_ATTRIBUTE = "acceptQuestButton",
-	INPUT_CATEGORY_ATTRIBUTE = "inputCategory",
+    ACCEPT_QUEST_BUTTON_ATTRIBUTE = "acceptQuestButton",
+    AGGROED_PLAYER_USER_ID_ATTRIBUTE = "aggroedPlayerUserId",
+    CHARACTER_COLLISION_GROUP = "character",
+    DASH_DEBOUNCE_ATTRIBUTE = "onDashCooldown",
+    DATA_STORE_NAME = "main",
+    DEFAULT_SPECIAL_COOLDOWNS_STRING = "0,0",
+    DIALOG_ATTRIBUTE = "dialog",
+    DISABLED_ATTRIBUTE = "disabled",
+    EXP_ATTRIBUTE = "exp",
+    ID_ATTRIBUTE = "id",
+    INPUT_CATEGORY_ATTRIBUTE = "inputCategory",
+    INVENTORY_ATTRIBUTE = "inventory",
+    INITIAL_ORIENTATION_ATTRIBUTE = "initialOrientation",
+    INITIAL_POSITION_ATTRIBUTE = "initialPosition",
+    NAME_ATTRIBUTE = "name",
+    NPC_COLLISION_GROUP = "npc",
+    QUEST_ID_ATTRIBUTE = "questId",
+    QUEST_PROGRESS_ATTRIBUTE = "questProgress",
+    SPECIAL_COOLDOWNS_ATTRIBUTE = "specialCooldowns",
+    SPECIAL_ONE_ATTRIBUTE = "specialOne",
+    SPECIAL_TWO_ATTRIBUTE = "specialTwo",
+    STAT_POINTS_ATTRIBUTE = "statPoints",
+    WATER_ATTACHMENT_NAME = "waterAttachment",
+    WATER_MODEL_NAME = "WaterModel",
+    WIND_COLLECTION_TAG = "windShake",
+    ZONE_ATTRIBUTE = "zone",
 
-	QUEST_ID_ATTRIBUTE = "questId",
-	QUEST_PROGRESS_ATTRIBUTE = "questProgress",
+    DASH_KEY_CODE = Enum.KeyCode.Q,
 
-	IS_DEAD_ATTRIBUTE = "isDead",
-
-	INITIAL_POSITION_ATTRIBUTE = "initialPosition",
-	INITIAL_ORIENTATION_ATTRIBUTE = "initialOrientation",
-
-	IS_ANIMATING_ATTRIBUTE = "isAnimating",
-
-	DIALOG_ATTRIBUTE = "dialog",
-
-	DEFAULT_TWEEN_INFO = TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut),
-	MEDIUM_TWEEN_INFO = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut),
-	SLOW_TWEEN_INFO = TweenInfo.new(2, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut),
-
-	ZONE_ATTRIBUTE = "zone",
-
-	ANIMATION_INDEX_ATTRIBUTE = "animationIndex",
-
-	IS_ON_COOLDOWN_ATTRIBUTE = "isOnCooldown",
-	SWING_COOLDOWN_ATTRIBUTE = "swingCooldown",
-
-	DAMAGE_ATTRIBUTE = "damage",
-	VOLUME_ATTRIBUTE = "volume",
-
-	DISABLED_ATTRIBUTE = "disabled",
-	ID_ATTRIBUTE = "id",
-
-	HITBOX_SIZE_ATTRIBUTE = "hitboxSize",
-	HITBOX_OFFSET_ATTRIBUTE = "hitboxOffset",
-
-	SPECIAL_ONE_ATTRIBUTE = "specialOne",
-	SPECIAL_TWO_ATTRIBUTE = "specialTwo",
-
-	SPECIAL_COOLDOWNS_ATTRIBUTE = "specialCooldowns",
-	DEFAULT_SPECIAL_COOLDOWNS_STRING = "0,0",
-
-	INVENTORY_ATTRIBUTE = "inventory",
+    DEFAULT_TWEEN_INFO = TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut),
+    MEDIUM_TWEEN_INFO = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut),
+    SLOW_TWEEN_INFO = TweenInfo.new(2, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut),
 }
 
 return Constants
