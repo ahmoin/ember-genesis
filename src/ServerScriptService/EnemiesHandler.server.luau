@@ -8,11 +8,11 @@ local ServerStorage = game:GetService("ServerStorage")
 local Workspace = game:GetService("Workspace")
 
 local Constants = require(ReplicatedStorage:WaitForChild("Modules"):WaitForChild("Constants"))
-local Enemies = require(ServerStorage.Enemies)
+local Enemies = require(ServerStorage:WaitForChild("Enemies"))
 
 local enemies = Workspace:WaitForChild("Enemies")
 local npcs = Workspace:WaitForChild("NPCs")
-local enemyTemplates = ServerStorage.EnemyTemplates
+local enemyTemplates = ServerStorage:WaitForChild("EnemyTemplates")
 
 local mapRaycastParameters = RaycastParams.new()
 mapRaycastParameters.FilterType = Enum.RaycastFilterType.Include

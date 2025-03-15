@@ -5,7 +5,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 
-local CameraShakeInstance = require(ReplicatedStorage.CameraShakeInstance)
+local CameraShakeInstance = require(ReplicatedStorage:WaitForChild("CameraShakeInstance"))
 
 local CameraShakeState = CameraShakeInstance.CameraShakeState
 

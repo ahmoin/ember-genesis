@@ -3,14 +3,14 @@
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-local Tools = require(ReplicatedStorage.Modules.Tools)
+local Tools = require(ReplicatedStorage:WaitForChild("Modules"):WaitForChild("Tools"))
 local AnimationController = require(ReplicatedStorage:WaitForChild("Libraries"):WaitForChild("AnimationController"))
 local Constants = require(ReplicatedStorage:WaitForChild("Modules"):WaitForChild("Constants"))
 
 local player = Players.LocalPlayer
 
-local remotes = ReplicatedStorage.Remotes
-local activateToolRemote = remotes.ActivateTool
+local remotes = ReplicatedStorage:WaitForChild("Remotes")
+local activateToolRemote = remotes:WaitForChild("ActivateTool")
 
 local backpackChildAddedConnection: RBXScriptConnection?
 local toolActivatedConnection: RBXScriptConnection?

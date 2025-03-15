@@ -10,12 +10,12 @@ local Workspace = game:GetService("Workspace")
 local Constants = require(ReplicatedStorage:WaitForChild("Modules"):WaitForChild("Constants"))
 local Levels = require(ReplicatedStorage:WaitForChild("Modules"):WaitForChild("Levels"))
 local Quests = require(ReplicatedStorage:WaitForChild("Modules"):WaitForChild("Quests"))
-local doTypewriterEffect = require(ReplicatedStorage.Utility.doTypewriterEffect)
+local doTypewriterEffect = require(ReplicatedStorage:WaitForChild("Utility"):WaitForChild("doTypewriterEffect"))
 
-local remotes = ReplicatedStorage.Remotes
-local refundStatsRemote = remotes.RefundStats
-local spendStatsRemote = remotes.SpendStatPoints
-local acceptQuestRemote = remotes.AcceptQuest
+local remotes = ReplicatedStorage:WaitForChild("Remotes")
+local refundStatsRemote = remotes:WaitForChild("RefundStats")
+local spendStatsRemote = remotes:WaitForChild("SpendStatPoints")
+local acceptQuestRemote = remotes:WaitForChild("AcceptQuest")
 
 local player = Players.LocalPlayer
 

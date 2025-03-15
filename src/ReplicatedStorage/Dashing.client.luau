@@ -9,11 +9,11 @@ local AnimationController = require(ReplicatedStorage:WaitForChild("Libraries"):
 local Constants = require(ReplicatedStorage:WaitForChild("Modules"):WaitForChild("Constants"))
 local Signals = require(ReplicatedStorage:WaitForChild("Modules"):WaitForChild("Signals"))
 
-local animations = ReplicatedStorage.Animations
-local backDashAnimation = animations.BackDash
-local frontDashAnimation = animations.FrontDash
-local leftDashAnimation = animations.LeftDash
-local rightDashAnimation = animations.RightDash
+local animations = ReplicatedStorage:WaitForChild("Animations")
+local frontDashAnimation = animations:WaitForChild("FrontDash")
+local backDashAnimation = animations:WaitForChild("BackDash")
+local leftDashAnimation = animations:WaitForChild("LeftDash")
+local rightDashAnimation = animations:WaitForChild("RightDash")
 
 local player = Players.LocalPlayer
 

@@ -7,9 +7,9 @@ local RunService = game:GetService("RunService")
 local Constants = require(ReplicatedStorage:WaitForChild("Modules"):WaitForChild("Constants"))
 local Levels = require(ReplicatedStorage:WaitForChild("Modules"):WaitForChild("Levels"))
 
-local remotes = ReplicatedStorage.Remotes
-local refundStatsRemote = remotes.RefundStats
-local spendStatsRemote = remotes.SpendStatPoints
+local remotes = ReplicatedStorage:WaitForChild("Remotes")
+local refundStatsRemote = remotes:WaitForChild("RefundStats")
+local spendStatsRemote = remotes:WaitForChild("SpendStatPoints")
 
 local function onRefundStats(player: Player)
 	local exp = player:GetAttribute(Constants.EXP_ATTRIBUTE)

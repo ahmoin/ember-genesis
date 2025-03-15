@@ -7,8 +7,8 @@ local Constants = require(ReplicatedStorage:WaitForChild("Modules"):WaitForChild
 
 local npcs = Workspace:WaitForChild("NPCs")
 
-local remotes = ReplicatedStorage.Remotes
-local acceptQuestRemote = remotes.AcceptQuest
+local remotes = ReplicatedStorage:WaitForChild("Remotes")
+local acceptQuestRemote = remotes:WaitForChild("AcceptQuest")
 
 local function onAcceptQuestEvent(player: Player)
 	local character = player.Character

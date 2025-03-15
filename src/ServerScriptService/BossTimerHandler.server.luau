@@ -7,7 +7,7 @@ local Workspace = game:GetService("Workspace")
 local bossTimers = Workspace:WaitForChild("BossTimers")
 local enemies = Workspace:WaitForChild("Enemies")
 
-local enemyTemplates = ServerStorage.EnemyTemplates
+local enemyTemplates = ServerStorage:WaitForChild("Enemies")
 
 local function formatTime(seconds: number)
 	local minutes = math.floor(seconds / 60)

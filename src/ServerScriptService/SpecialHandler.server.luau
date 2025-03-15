@@ -7,10 +7,10 @@ local ServerStorage = game:GetService("ServerStorage")
 
 local Constants = require(ReplicatedStorage:WaitForChild("Modules"):WaitForChild("Constants"))
 local Specials = require(ReplicatedStorage:WaitForChild("Modules"):WaitForChild("Specials"))
-local Enemies = require(ServerStorage.Enemies)
+local Enemies = require(ServerStorage:WaitForChild("Enemies"))
 
-local remotes = ReplicatedStorage.Remotes
-local useSpecialRemote = remotes.UseSpecial
+local remotes = ReplicatedStorage:WaitForChild("Remotes")
+local useSpecialRemote = remotes:WaitForChild("UseSpecial")
 
 local function onUseSpecialEvent(player: Player, index: number)
 	local character = player.Character

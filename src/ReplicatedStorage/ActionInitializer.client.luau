@@ -9,10 +9,10 @@ local Constants = require(ReplicatedStorage:WaitForChild("Modules"):WaitForChild
 local Signals = require(ReplicatedStorage:WaitForChild("Modules"):WaitForChild("Signals"))
 local Specials = require(ReplicatedStorage:WaitForChild("Modules"):WaitForChild("Specials"))
 
-local remotes = ReplicatedStorage.Remotes
-local useSpecialRemote = remotes.UseSpecial
+local remotes = ReplicatedStorage:WaitForChild("Remotes")
+local useSpecialRemote = remotes:WaitForChild("UseSpecial")
 
-local animations = ReplicatedStorage.Animations
+local animations = ReplicatedStorage:WaitForChild("Animations")
 
 local player = Players.LocalPlayer
 

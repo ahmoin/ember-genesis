@@ -8,8 +8,8 @@ local Enemies = require(ServerStorage:WaitForChild("Enemies"))
 local Constants = require(ReplicatedStorage:WaitForChild("Modules"):WaitForChild("Constants"))
 local Tools = require(ReplicatedStorage:WaitForChild("Modules"):WaitForChild("Tools"))
 
-local remotes = ReplicatedStorage.Remotes
-local activateToolRemote = remotes.ActivateTool
+local remotes = ReplicatedStorage:WaitForChild("Remotes")
+local activateToolRemote = remotes:WaitForChild("ActivateTool")
 
 local function setCooldownOnFalse(tool: Tool)
 	if tool and tool:IsDescendantOf(Workspace) then
